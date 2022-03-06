@@ -3,11 +3,19 @@ import AppContext from '../context/context';
 import { Table, Button } from "react-bootstrap";
 import '../style/table.css'
 
-function Table1() {
-  const { stateA } = useContext(AppContext);
+function RenderTable() {
+  const { data, setData } = useContext(AppContext);
 
   const deleteRow = (e) => {
-    return e.target.parentNode.parentNode.remove()
+    const elementRemove = e.target.parentNode.parentNode.firstChild.textContent;
+    const header = data[0];
+    const updatedData = data.slice(1).filter((arr) => {
+      if (arr[0] !== elementRemove) {
+        return arr;
+      }
+    });
+    setData([header, ...updatedData]);
+    console.log(data)
   };
 
 
@@ -16,7 +24,7 @@ function Table1() {
       <thead>
         <tr>
           {
-            stateA.map((element, index) => {
+            data.map((element, index) => {
               if(index===0){
               return element.map((item) => {
                 return <th>{ item }</th>
@@ -28,10 +36,10 @@ function Table1() {
       </thead>
       <tbody>
       {
-        stateA.map((element, index) => {
+        data.map((element, index) => {
           if(index !== 0 && element.length !== 1){
             return (
-              <tr>
+              <tr key={ index }>
                 {
                   element.map((item) => {
                     return <td>{item}</td>
@@ -49,4 +57,4 @@ function Table1() {
   )
 }
 
-export default Table1;
+export default RenderTable;

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import AppContext from './context';
 
 function Provider({ children }) {
-  const [stateA, setStateA] = useState([]);
-  const [stateB, setStateB] = useState('initialStateB');
+  const [data, setData] = useState([]);
+  const [fileName, setFileName] = useState();
   const contextValue = {
-    stateA,
-    setStateA,
-    stateB,
-    setStateB,
+    data,
+    setData,
+    fileName,
+    setFileName,
   };
 
   return (

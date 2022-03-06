@@ -6,12 +6,13 @@ import '../style/uploadZone.css'
 const fileTypes = ["CSV"];
 
 function DragDrop() {
-  const { setStateA } = useContext(AppContext);
+  const { setData, setFileName, fileName } = useContext(AppContext);
   const handleChange = (file) => {
+    setFileName(file.name)
   	Papa.parse(file, {
     	header: false,
     	complete: results => {
-      	setStateA(results.data)
+      	setData(results.data)
     },
   });
   };
