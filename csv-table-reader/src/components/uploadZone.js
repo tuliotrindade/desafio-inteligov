@@ -7,6 +7,8 @@ const fileTypes = ["CSV"];
 
 function DragDrop() {
   const { setData, setFileName} = useContext(AppContext);
+
+  /* realiza o uploado dos dados do aquivo csv, os convertem para arrays e guarda dos dados no context */
   const handleChange = (file) => {
     setFileName(file.name)
     Papa.parse(file, {

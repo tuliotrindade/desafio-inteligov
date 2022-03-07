@@ -7,6 +7,7 @@ import '../style/table.css'
 function RenderTable() {
   const { data, setData, setRenderForm, setEditElement } = useContext(AppContext);
 
+  /* remove um elemento tanto da tabela vizualmente e também dos dados no context */
   const deleteRow = (e) => {
     const elementRemove = e.target.parentNode.parentNode.firstChild.textContent;
     const header = data[0];
@@ -19,6 +20,7 @@ function RenderTable() {
     console.log(data)
   };
 
+  /* envia o id do elemento a ser editado e permite a renderização do formulario de edição */
   const editRow = (e) => {
     const editElementId = e.target.parentNode.parentNode;
     setEditElement(editElementId.id);

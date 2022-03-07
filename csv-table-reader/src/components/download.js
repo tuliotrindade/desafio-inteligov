@@ -6,6 +6,8 @@ import { saveAs } from "file-saver";
 
 function Download() {
   const { fileName, data } = useContext(AppContext);
+
+  /* função para realizar download da nova tabela */
   const downloadFile = () => {
     return(
       saveAs(

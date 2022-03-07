@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import AppContext from '../context/context';
 import { Button } from "react-bootstrap";
 
@@ -6,23 +6,23 @@ import '../style/editRow.css'
 
 function EditRow() {
   const { data, setData, renderForm, editElement, setRenderForm } = useContext(AppContext);
-  const [newRow, setNewRow] = useState({});
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-    setNewRow({ ...newRow, [name]: value });
-  };
-
+  /* função que envia a edição para o contexto e atualiza a tabela */
   const submitEdit = () => {
     const inputs = document.querySelectorAll('.editInput')
     const inputsValue = []
+
+    /* verifica se todos os campos estão preenchidos se não insere uma string '--' para sinalizar que esta vazio */
     Array.prototype.slice.call(inputs).map((item) => {
+
       if(item.value === '' ){
         return inputsValue.push('--')
       }
       return inputsValue.push(item.value)
     })
-    const newData = []
+    let newData = []
+
+    /* busca o elemento elemento a ser editado e substitui suas informações pelos novos dados no context */
     data.map((item, index) => {
       if( index === Number(editElement)){
         return newData.push(inputsValue)
@@ -31,6 +31,7 @@ function EditRow() {
     })
     setRenderForm(false)
     setData(newData)
+    newData = []
   };
 
   const generateForm = (data) => {
@@ -44,8 +45,6 @@ function EditRow() {
               <input
                 className="editInput"
                 name={collum}
-                onChange={handleChange}
-                value={newRow[collum]}
                 />
             </label>
           ))}
@@ -56,7 +55,7 @@ function EditRow() {
               type='submit'
               onClick={submitEdit}
               >
-              Criar nova linha
+              SUBMIT EDIT
             </Button>
             <Button variant="info" onClick={ () => setRenderForm(false)}>
               CANCEL

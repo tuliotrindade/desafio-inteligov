@@ -6,14 +6,9 @@ import '../style/newRow.css'
 
 function NewRow() {
   const { data, setData } = useContext(AppContext);
-  const [newRow, setNewRow] = useState({});
   const [renderForm, setRenderForm] = useState(false)
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-    setNewRow({ ...newRow, [name]: value });
-  };
-
+  /* função para eviar os dados dos inputs para o context e atualizar tabela com nova linha */
   const submitRow = () => {
     const inputs = document.querySelectorAll('.createInput')
     const inputsValue = []
@@ -38,8 +33,6 @@ function NewRow() {
               <input
                 className="createInput"
                 name={collum}
-                onChange={handleChange}
-                value={newRow[collum]}
                 />
             </label>
           ))}
