@@ -7,9 +7,13 @@ function Header() {
   const { fileName } = useContext(AppContext)
 	return(
     <header>
-      <h1>wellcome to csv table reader</h1>
-      <DragDrop/>
-      {fileName ? <h2>working on { fileName }</h2> : null}
+      <div className="initialHeader">
+        <h1>CSV TABLE READER</h1>
+        <DragDrop/>
+      </div>
+      <div className="fileName">
+        { fileName ? <h2>WORKING AT: { fileName }</h2> : null }
+      </div>
     </header>
   )
 }

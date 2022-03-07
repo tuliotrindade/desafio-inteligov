@@ -1,5 +1,7 @@
 .app {
-	height: 100%;
-	background-color: lightgray;
+	height: 100vh;
+	width: 100vw;
+	background-color:#4781ff;
 	background-size: cover;
+	align-items: center;
 }

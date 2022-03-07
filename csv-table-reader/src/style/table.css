@@ -1,3 +1,20 @@
 .table{
-	padding: 50px;
+	background-color: #373b3e;;
+	display: table;
+	max-width: 90vw;
+	align-content: center;
+	margin-left: 5vw;
+	margin-right: 5vw;
+}
+
+.tableContainer {
+	background-color: #2c1984;
+	padding: 20px;
+}
+
+.download {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }

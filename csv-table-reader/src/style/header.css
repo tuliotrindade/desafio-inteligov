@@ -2,4 +2,36 @@ header {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-around;
+  padding-top: 20px;
+  
+  background-color: #2c1984;
+}
+
+h1 {
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+h2, h3 {
+  color: #00016a;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.initialHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #5c83ff;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.fileName {
+  width: 100%;
+  text-align: center;
+  background-color: #5c83ff;
+  margin-bottom: 20px;
 }

@@ -1,0 +1,11 @@
+.uploadZone {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.dragDrop {
+	background-color: white;
+	border-radius: 5px;
+}

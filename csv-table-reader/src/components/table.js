@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import AppContext from '../context/context';
+import Download from '../components/download';
 import { Table, Button } from "react-bootstrap";
 import '../style/table.css'
 
 function RenderTable() {
-  const { data, setData } = useContext(AppContext);
+  const { data, setData, setRenderForm, setEditElement } = useContext(AppContext);
 
   const deleteRow = (e) => {
     const elementRemove = e.target.parentNode.parentNode.firstChild.textContent;
@@ -18,42 +19,51 @@ function RenderTable() {
     console.log(data)
   };
 
+  const editRow = (e) => {
+    const editElementId = e.target.parentNode.parentNode;
+    setEditElement(editElementId.id);
+    setRenderForm(true);
+  }
+
 
   return (
-    <Table striped bordered hover variant="dark" className="table" >
-      <thead>
-        <tr>
-          {
-            data.map((element, index) => {
-              if(index===0){
-              return element.map((item) => {
-                return <th>{ item }</th>
+    <div className="tableContainer">
+      <Table striped bordered hover variant="dark" className="table" >
+        <thead>
+          <tr key='thead'>
+            {
+              data.map((element, index) => {
+                if(index===0){
+                return element.map((item) => {
+                  return <th key={ item }>{ item }</th>
+                })
+              }
               })
             }
-            })
-          }
-        </tr>
-      </thead>
-      <tbody>
-      {
-        data.map((element, index) => {
-          if(index !== 0 && element.length !== 1){
-            return (
-              <tr key={ index }>
-                {
-                  element.map((item) => {
-                    return <td>{item}</td>
-                  })
-                }
-                <td><Button variant="secondary" className="options">edit</Button></td>
-                <td><Button variant="secondary" className="options" onClick={(e) => deleteRow(e)}>delete</Button></td>
-              </tr>
-            )
-          }
-        })
-      }
-      </tbody>
-    </Table>
+          </tr>
+        </thead>
+        <tbody>
+        {
+          data.map((element, index) => {
+            if(index !== 0 && element.length !== 1){
+              return (
+                <tr key={ index } id={ index }>
+                  {
+                    element.map((item) => {
+                      return <td key={ item }>{item}</td>
+                    })
+                  }
+                  <td><Button variant="secondary" className="options" onClick={ (e) => editRow(e) }>edit</Button></td>
+                  <td><Button variant="secondary" className="options" onClick={(e) => deleteRow(e)}>delete</Button></td>
+                </tr>
+              )
+            }
+          })
+        }
+        </tbody>
+      </Table>
+      <Download/>
+    </div>
   )
 }
 

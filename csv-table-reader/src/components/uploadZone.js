@@ -6,24 +6,28 @@ import '../style/uploadZone.css'
 const fileTypes = ["CSV"];
 
 function DragDrop() {
-  const { setData, setFileName, fileName } = useContext(AppContext);
+  const { setData, setFileName} = useContext(AppContext);
   const handleChange = (file) => {
     setFileName(file.name)
-  	Papa.parse(file, {
-    	header: false,
-    	complete: results => {
-      	setData(results.data)
+    Papa.parse(file, {
+      header: false,
+      complete: results => {
+      results.data.pop()
+      setData(results.data)
     },
   });
   };
   return (
     <div className="uploadZone">
-      <FileUploader 
-        handleChange={ handleChange }
-        name="file"
-        types={ fileTypes }
-        onTypeError={(err) => alert(err)}
-      />
+      <h3>UPLOAD YOUR FILE HERE:</h3>
+      <div className="dragDrop">
+        <FileUploader 
+          handleChange={ handleChange }
+          name="file"
+          types={ fileTypes }
+          onTypeError={(err) => alert(err)}
+        />
+      </div>
     </div>
   );
 }
