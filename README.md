@@ -3,7 +3,7 @@
 
 ## RESUMO DO PROJETO
 
--O projeto consiste em uma aplicação, que recebe o upload de um aquivo csv, renderização do arquivo como uma tabela html, com possibilidades de adição de novas linhas, exclusão e atualiação.
+-O projeto consiste em uma aplicação, que recebe o upload de um aquivo csv, renderização do arquivo como uma tabela html, com possibilidades de adição de novas linhas, exclusão e atualiação e posteriormente download da tabela atualizada.
 
 ## Tecnologias Utilizadas
 
@@ -35,7 +35,7 @@
 
 -Aplicação com todas as opções de alteração em aberto
 
-<img src="csv-table-reader/src/images/fullpage.png" alt="table"/>
+<img src="csv-table-reader/src/images/fullpage.jpeg" alt="table"/>
 
 ## Contato 
 
