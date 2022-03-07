@@ -15,9 +15,16 @@ function NewRow() {
   };
 
   const submitRow = () => {
-    const newRowArray = Object.values(newRow);
-    setData([...data, newRowArray]);
-    console.log(data)
+    const inputs = document.querySelectorAll('.createInput')
+    const inputsValue = []
+    Array.prototype.slice.call(inputs).map((item) => {
+      if(item.value === '' ){
+        return inputsValue.push('--')
+      }
+      return inputsValue.push(item.value)
+    })
+    setRenderForm(false)
+    setData([...data, inputsValue])
   };
 
   const generateForm = (data) => {
@@ -29,6 +36,7 @@ function NewRow() {
             <label key={index}>
               { collum.toUpperCase() }:
               <input
+                className="createInput"
                 name={collum}
                 onChange={handleChange}
                 value={newRow[collum]}
